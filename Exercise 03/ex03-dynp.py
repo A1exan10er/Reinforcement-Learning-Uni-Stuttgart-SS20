@@ -44,15 +44,15 @@ def value_iteration():
                     n_state = a[k][1]
                     r = a[k][2]
                     is_terminal = a[k][3]
-                    print("from state {} taking action {} leads to state {} with possibility {} and reward {}".format(i,j,n_state,p,r))
-                    print("Reach the terminal:{}".format(is_terminal))
-                    sum += p * (r + gamma * n_state)
+                    #print("from state {} taking action {} leads to state {} with possibility {} and reward {}".format(i,j,n_state,p,r))
+                    #print("Reach the terminal:{}".format(is_terminal))
+                    sum += p * (r + gamma * V_states[n_state])
                 v_function_list.append(sum) # This list contains all returns for every action from state i with action as index
                 
             if i not in [5,7,11,12,15]:
                 V_states[i] = max(v_function_list)
             policy.append(np.argmax(v_function_list))
-            print(v_function_list)
+            #print(v_function_list)
             Theta = max(Theta, abs(v_state - V_states[i]))
     print("It takes {} steps to converge".format(step))
     print("The optimal value for all states are:")
