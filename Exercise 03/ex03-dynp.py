@@ -48,9 +48,9 @@ def value_iteration():
                     #print("Reach the terminal:{}".format(is_terminal))
                     sum += p * (r + gamma * V_states[n_state])
                 v_function_list.append(sum) # This list contains all returns for every action from state i with action as index
-                
-            if i not in [5,7,11,12,15]:
-                V_states[i] = max(v_function_list)
+
+
+            V_states[i] = max(v_function_list)
             policy.append(np.argmax(v_function_list))
             #print(v_function_list)
             Theta = max(Theta, abs(v_state - V_states[i]))
@@ -58,7 +58,7 @@ def value_iteration():
     print("The optimal value for all states are:")
     print(V_states)
     return policy
-        
+
 
 
 def main():
